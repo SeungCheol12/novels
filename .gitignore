@@ -232,3 +232,4 @@ $RECYCLE.BIN/
 backend/novels/.gitattributes
 backend/novels/.gitignore
 frontend/novel/.gitignore
+*.env
