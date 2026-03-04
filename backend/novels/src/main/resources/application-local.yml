@@ -1,0 +1,7 @@
+spring:
+  # DB 서버 연동 정보
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/react
+    username: javadb
+    password: 12345
