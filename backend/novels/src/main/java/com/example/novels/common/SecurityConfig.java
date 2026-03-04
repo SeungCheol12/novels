@@ -37,7 +37,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 // swagger 로 접근 경로 열기
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "api/novels/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/novels/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/member/register").permitAll()
                 .anyRequest().authenticated());
         // cors 설정
         http.cors(httpSecurityCorsConfig -> httpSecurityCorsConfig.configurationSource(corsconfigurationSource()));

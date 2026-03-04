@@ -1,6 +1,31 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { postRegister } from '../../apis/userApis';
+import type { RegisterForm as RegisterFormType } from '../../types/user';
+
 function RegisterForm() {
-  const handleChange = () => {};
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
+  const [form, setForm] = useState<RegisterFormType>({
+    email: '',
+    password: '',
+    nickname: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    try {
+      await postRegister(form);
+      alert('회원가입 성공');
+      navigate('/member/login');
+    } catch (error) {
+      alert('회원가입 실패');
+    }
+  };
+
   return (
     <form className="mt-6 flex flex-col gap-3" onSubmit={handleSubmit}>
       <input
